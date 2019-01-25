@@ -1,0 +1,218 @@
+// -------------imports--------------------
+@import 'shadows','center-mixins','colors'
+
+$code-chip-list-width: 430px
+$design-chip-list-width: 448px
+$photo-chip-list-width: 466px
+
+
+body.coding
+    background: $dev-wrapper
+    #chips-wrapper
+        background: $dev-wrapper
+        .chips-list
+            width: $code-chip-list-width
+            .chips
+                background: $dev-accent
+            .chip-clicked
+                background: #fff
+                h1
+                    color: $dev-accent
+    .wrapper
+        margin-top: -40px
+        button
+            background: $dev-accent
+body.design
+    background: $design-wrapper
+    #chips-wrapper
+        background: $design-wrapper
+        .chips-list
+            width: $design-chip-list-width
+            .chips
+                background: $design-accent
+            .chip-clicked
+                background: #fff
+                h1
+                    color: $design-accent
+    .wrapper
+        margin-top: -40px
+        button
+            background: $design-accent
+
+body.photography
+    background: $photo-wrapper
+    #chips-wrapper
+        background: $photo-wrapper
+        .chips-list
+            width: $photo-chip-list-width
+            .chips
+                background: $photo-accent
+            .chip-clicked
+                background: #fff
+                h1
+                    color: $photo-accent
+    .wrapper
+        margin-top: -40px
+        button
+            background: $photo-accent
+
+button.pre,button.next
+    position: fixed
+    width: 50px
+    height: 50px
+    bottom: 0
+    border: none
+    outline: none
+    box-shadow: $box-shadow-4dp
+    margin: 12px
+    border-radius: 50% 50% 50% 0%
+    z-index: 1
+    svg
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        fill: #fff
+        margin-left: -1px
+
+button.pre
+    left: 0
+button.next
+    right: 0
+    border-radius: 50% 50% 0% 50%
+    svg
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        margin-left: 1px
+
+.header
+    position: relative
+    width: 100%
+    height: 300px
+    img
+        @include centered-x
+        position: absolute
+        width: 400px
+        z-index: -1
+    svg.back
+        position: absolute
+        display: inline-block
+        width: 24px
+        height: 24px
+        margin: 12px
+        background: rgba(255, 255, 255, 0.22)
+        fill: rgba(0, 0, 0, 0.42)
+        padding: 8px
+        border-radius: 50%
+        transition: background 0.2s ease-in-out
+        &:hover
+            background: rgba(255, 255, 255, 0.32)
+
+//chips-wrapper-------------------------------------------------------------
+#chips-wrapper
+    text-align: center
+    margin: 10px 0
+    overflow-x: scroll
+    position: sticky
+    top: 0
+    z-index: 1
+    // transition: all 0.2s ease-in-out
+    &::-webkit-scrollbar
+        display: none
+    .chips-list
+        margin: 0 auto
+        padding: 0 6px
+        list-style: none
+        height: 62px
+        .chips
+            margin: 15px 6px
+            // display: inline-block
+            float: left
+            height: 32px
+            border-radius: 50px
+            box-shadow: $box-shadow-2dp
+            transition: box-shadow 225ms ease-in-out
+            // cursor: pointer
+            h1
+                font-family: 'fira sans'
+                font-weight: bold
+                text-align: center
+                font-size: 14px
+                color: #fff
+                padding: 0 12px
+                line-height: 33px
+                text-transform: uppercase
+
+.grid-wrapper
+    overflow: hidden
+    width: 100%
+    margin: 30px auto
+    text-align: center
+    margin-bottom: 65px
+    .card
+        position: relative
+        width: 250px
+        height: 300px
+        background: #fff
+        margin: 10px
+        border-radius: 2px
+        box-shadow: $box-shadow-4dp
+        display: inline-block
+        overflow: hidden
+        text-align: initial
+        .title-bar
+            font-family: 'fira sans'
+            font-weight: normal
+            height: 50px
+            position: relative
+            background: rgba(0,0,0,0.1)
+            color: rgba(0,0,0,0.4)
+            font-size: 20px
+            padding: 0 18px
+            line-height: 50px
+            img.open-logo
+                @include centered-y
+                position: absolute
+                right: 8px
+                width: 24px
+                height: 24px
+                padding: 8px
+                border-radius: 50%
+                transition: all 0.2s ease-in-out
+                &:hover
+                    background: rgba(0,0,0,0.1)
+                &:active
+                    background: rgba(0,0,0,0.2)
+
+            .disabled-open-logo
+                &:hover
+                    background: none !important
+                    cursor: default
+                &:active
+                    background: none !important
+                    cursor: default
+
+        .project-wrapper,.design-wrapper,.photography-wrapper
+            @include centered-x
+            display: block
+            width: 250px
+            height: 250px
+            overflow: hidden
+            box-sizing: border-box
+            border: 10px solid white
+            //-------------------------------design-mini-card-styles---------------
+            img
+                @include centered
+                height: 250px
+                box-sizing: border-box
+                padding: 20px
+            //-------------------------------photo-mini-card-styles----------------
+            // img.fb-photos
+            //     width: 100%
+            //     transform: scale(0.9)
+            //     border-radius: 2px
+
+
+    .card-hidden
+        display: none

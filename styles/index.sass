@@ -1,0 +1,755 @@
+// -------------imports--------------------
+@import 'card-grid'
+
+@keyframes chapak
+    0%, 100%
+        transform: translate(-50%, -50%) scale(1)
+
+    50%
+        transform: translate(-50%, -50%) scale(1.5)
+
+@keyframes gol-gol
+    0%, 100%
+        transform: rotateY(0deg)
+        border: 3px solid #757575
+
+    50%
+        transform: rotateY(180deg)
+        border: 3px solid #9E9E9E
+
+//--------values----------
+$circle-value: 300px
+//--------values----------
+
+//------------------font-mixins---------------
+@mixin div-wala-font
+    font-size: 36px
+    line-height: 1.1
+    color: rgba(0,0,0,0.32)
+    -webkit-font-smoothing: antialiased
+    font-weight: 600
+//------------------font-mixins-----------------------
+
+*
+    margin: 0
+    padding: 0
+    // font-family: 'Fira Sans'
+    // font-weight: normal
+    cursor: default
+    &::selection
+        background: rgba(0, 0, 0, 0.20)
+
+body
+    background: #424242
+
+.wrapper,.header
+    overflow: hidden
+    max-width: 1400px
+    margin: 0 auto
+    padding: 0 10px
+    @media only screen and(max-width: 1400px)
+        padding: 0
+    .overlay
+        display: none
+
+//-------------------------background-wallpaper-animation-styles-----------------------
+.background-wrapper
+    @include centered-x
+    position: absolute
+    width: 100%
+    height: 450px
+    overflow: hidden
+    .cir-1,.cir-2,.cir-3,.cir-4
+        @include centered
+        width: ($circle-value*4)
+        height: ($circle-value*4)
+        background: rgba(#000,0.05)
+        border-radius: 50%
+    .cir-2
+        width: ($circle-value*3)
+        height: ($circle-value*3)
+    .cir-3
+        width: ($circle-value*2)
+        height: ($circle-value*2)
+    .cir-4
+        width: $circle-value
+        height: $circle-value
+
+    .play-ani
+        animation: chapak 3s cubic-bezier(0.5,1.5,0.5,1.5)
+//-------------------------background-wallpaper-animation-styles-----------------------
+
+//----------------------------------gutter-text-styles-----------------------------
+h1.gutter-text
+    @include centered-x
+    font-size: 22px
+    color: #757575
+    padding: 15px 10px
+    text-align: center
+    letter-spacing: 1px
+    font-family: 'fira sans'
+    font-weight: normal
+    .load
+        position: absolute
+        right: -15px
+        top: 0
+        margin-left: 70px
+        margin-top: 14px
+        width: 20px
+        height: 20px
+        // border: 3px solid #757575
+        border-radius: 50%
+        animation: gol-gol 1s ease-in-out infinite
+//----------------------------------gutter-text-styles-----------------------------
+
+//----------------------------------ripple-styles----------------------------------
+.ripple
+    @include centered
+    position: absolute
+    width: 0
+    height: 0
+    transition: all 0.3s ease
+    border-radius: 50%
+.logo:active .ripple
+    width: 100%
+    height: 100%
+    background-color: rgba(#000,0.1)
+//----------------------------------ripple-styles----------------------------------
+header,section#bio,section#logo-wrapper,section#passions,section#youtube,section#qualifications,section#social,footer
+    overflow: hidden
+    border-radius: 2px
+    box-shadow: $box-shadow-4dp
+    @media only screen and(max-width: 1400px)
+        border-radius: 0
+
+//-----------------------------------header----------------------------------------
+header
+    position: relative
+    width: 100%
+    height: 500px
+    left: 0
+    z-index: 1
+    transition: box-shadow 0.3s ease-in-out
+    // background: #fff
+    background: url('../assets/1.png')
+    background-color: $header
+    background-position: center
+    .pro-pic
+        width: 180px
+        height: 180px
+        border: 3px solid white
+        margin: 157px auto 0
+        background: url('../assets/me1.svg')
+            color: #fff
+            size: 80%
+            position: 55% 15px
+            repeat: no-repeat
+        border-radius: 50%
+        box-shadow: inherit
+        transition: all 300ms ease-in-out
+    h1.name,h1.desc
+        text-align: center
+        margin-top: 38px
+        font-size: 24px
+        letter-spacing: 2px
+        color: rgba(0,0,0,.4)
+        font-family: 'Fira Sans'
+        font-weight: normal
+    hr
+        width: 200px
+        height: 1px
+        background: linear-gradient(to right, rgba(#000,0),rgba(#000,0.3) ,rgba(#000,0))
+        margin: 7px auto
+        border: 0
+    h1.desc
+        font-size: 16px
+        margin: initial
+
+// ------------------------------------my-bio----------------------------------------
+#bio
+    width: 100%
+    min-height: 250px
+    background: #fff
+    color: rgba(#000,0.4)
+    p.about-me
+        @include centered-x
+        font-size: 24px
+        font-family: 'fira sans'
+        font-weight: normal
+        text-align: justify
+        width: 90%
+        max-width: 700px
+        padding: 20px
+        margin: 20px 0
+        @media only screen and(max-width: 425px)
+            font-size: 22px
+        @media only screen and(max-width: 320px)
+            font-size: 20px
+
+// ----------------------------------------logo--------------------------------------
+#logo-wrapper
+    width: 100%
+    height: 500px
+    background: $logo-wrapper
+    position: relative
+    .background-wrapper
+        height: 500px
+    svg
+        @include centered
+        width: 130px
+
+    h1
+        @include centered-x
+        @include div-wala-font
+        font-family: 'fira sans'
+        position: absolute
+        text-align: center
+        width: 100%
+        top: 405px
+        margin-left: 160px
+        transition: all 500ms ease-in-out
+    h1.top
+        top: 60px
+        margin-left: -160px
+    h1,h1.top
+        @media only screen and(max-width: 768px)
+            margin: 0
+        @media only screen and(max-width: 425px)
+            font-size: 32px
+// ----------------------------------------my-passions-----------------------------------------
+#passions
+    width: 100%
+    height: 500px
+    @media only screen and(max-width: 1024px)
+        height: auto
+    .design-wrapper,
+    .dev-wrapper,
+    .photo-wrapper
+        width: (100%/3)
+        height: 500px
+        float: left
+        overflow: hidden
+        position: relative
+        @media only screen and(max-width: 1024px)
+            width: 50%
+        @media only screen and(max-width: 768px)
+            width: 100%
+        h1
+            @include centered-x
+            @include div-wala-font
+            font-family: 'fira sans'
+            position: absolute
+            bottom: 70px
+            transition: all 500ms ease-in-out
+            @media only screen and(max-width: 425px)
+                font-size: 32px
+            span
+                @include centered-x
+                font-size: 24px
+                top: -5px
+    img
+        @include centered-x
+        width: 430px
+        position: absolute
+        top: -12px
+    .dev-wrapper
+        background: $dev-wrapper
+    .design-wrapper
+        background: $design-wrapper
+        h1
+            top: 80px
+    .photo-wrapper
+        background: $photo-wrapper
+        @media only screen and(max-width: 1024px)
+            float: none
+            width: 100%
+    button
+        @include centered-x
+        font-family: 'fira sans'
+        font-weight: normal
+        position: absolute
+        bottom: 22px
+        height: 36px
+        border: none
+        background: rgba(#fff, 0.25)
+        border-radius: 2px
+        padding: 0 20px
+        font-size: 18px
+        color: rgba(#000,0.4)
+        box-shadow: $box-shadow-4dp
+        transition: box-shadow 0.1s ease,color 0.1s ease-in-out
+        cursor: default
+        &:focus
+            outline: none
+        &:active
+            box-shadow: $box-shadow-2dp
+        &:hover
+            color: rgba(#000,0.5)
+            // box-shadow: $box-shadow-4dp
+    button[name=design]
+        bottom: 442px
+
+//---------------------------------------youtube---------------------------------------------
+section#youtube
+    position: relative
+    width: 100%
+    height: 500px
+    background: $youtube
+    h1.youtube-heading
+        @include centered-x
+        @include div-wala-font
+        font-family: 'fira sans'
+        position: absolute
+        top: 35px
+        transition: all 500ms ease-in-out
+        @media only screen and(max-width: 425px)
+            font-size: 32px
+    .video-wrapper
+        @include centered
+        width: 90%
+        max-width: 500px
+        box-shadow: $box-shadow-4dp
+        border-radius: 2px
+        overflow: hidden
+        border: 4px solid #fff
+        background: #fff
+        .video-container
+            position: relative
+            height: 0
+            padding-bottom: 56.25%
+            iframe, object, embed
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+    button
+        @include centered-x
+        font-family: 'fira sans'
+        font-weight: normal
+        position: absolute
+        bottom: 35px
+        height: 36px
+        border: none
+        background: rgba(#fff, 0.25)
+        border-radius: 2px
+        padding: 0 20px
+        font-size: 18px
+        color: rgba(#000,0.4)
+        box-shadow: $box-shadow-4dp
+        transition: box-shadow 0.1s ease,color 0.1s ease-in-out
+        cursor: default
+        &:focus
+            outline: none
+        &:active
+            box-shadow: $box-shadow-2dp
+        &:hover
+            color: rgba(#000,0.5)
+
+//---------------------------------------qualifications--------------------------------------
+#qualifications
+    position: relative
+    width: 100%
+    height: 500px
+    background: $qualifications-wrapper
+    .q-content
+        @include centered
+        position: absolute
+        top: 42%
+        width: 300px
+        height: 300px
+        background: rgba(0,0,0,0)
+        border-radius: 2px
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.6)
+        overflow: hidden
+        svg
+            @include centered
+            fill: rgba(0,0,0,0.3)
+
+    .b-one,.b-two,.b-three,.b-four,.s-b-one,.s-b-two,.s-b-three,.s-b-four
+        display: inline-block
+        position: absolute
+        bottom: 5%
+        transform: translate(-50%,-50%)
+        width: 40px
+        height: 40px
+        background: #fff
+        box-shadow: $box-shadow-4dp
+        border-radius: 50%
+        margin: 0 10px
+        transition: all 0.3s ease-in-out
+        overflow: hidden
+        &:hover svg
+            transition: fill 0.1s ease-in-out
+            fill: rgba(0,0,0,0.5)
+        svg
+            @include centered
+            position: absolute
+            fill: rgba(0,0,0,0.3)
+            transition: all 0.3s ease-in-out
+            width: 24px
+        .edu
+            padding: 40px 18px
+            .title
+                font-family: 'fira sans'
+                font-size: 18px
+                color: rgba(0,0,0,0.55)
+                margin: 18px 0
+                letter-spacing: 2px
+                font-weight: 600
+            .content
+                .element
+                    margin: 6px 0
+                    .name
+                        font-weight: normal
+                        color: #212121
+                        font-size: 16px
+                        font-family: monospace
+                        margin: 4px 0
+                    .course
+                        font-family: 'fira sans'
+                        font-weight: normal
+                        color: #424242
+                        font-size: 14px
+                        margin: 4px 0
+                    .info
+                        font-family: 'fira sans'
+                        font-weight: normal
+                        color: #616161
+                        font-size: 13px
+                        margin: 4px 0
+                .pro-ele
+                    margin: 0 0 25px 0
+                    .name
+                        margin: 12px 0
+                        color: rgba(0,0,0,0.5)
+                hr
+                    background-color: #9e9e9e
+                    height: 1px
+                    border: 0
+                    margin: 12px 0
+
+            .progress-wrapper
+                width: 100%
+                height: 4px
+                background: rgba(0,0,0,0.1)
+                border-radius: 4px
+                .progress-value
+                    width: 65%
+                    height: 4px
+                    background: rgba(0,0,0,0.2)
+                    border-radius: 4px
+                    .progress-dot
+                        @include centered
+                        transform: translate(-50%,-50%)
+                        left: 100%
+                        width: 18px
+                        height: 18px
+                        border-radius: 50%
+                        background: #fff
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.4)
+                //--------------------------------progress-value-------------------------------
+                .web-d-value
+                    width: 75%
+                .a-d-value
+                    width: 65%
+                .illu-value
+                    width: 65%
+                .icono-value
+                    width: 80%
+                .ux-ui-value
+                    width: 70%
+                .photo-cap-value
+                    width: 75%
+                .p-edit-value
+                    width: 85%
+                .photo-mani-value
+                    width: 80%
+                //--------------------------------progress-value-------------------------------
+        .hide
+            display: none
+        .shift
+            top: 10%
+    .b-one,.s-b-one
+        left: 10%
+    .b-two
+        background: $dev-wrapper
+        left: 35%
+        svg
+            transform: translate(-50%,-50%) scale(1.2)
+
+    .s-b-two
+        left: 35%
+    .b-three,.s-b-three
+        background: $design-wrapper
+        left: 59%
+    .b-four,.s-b-four
+        background: $photo-wrapper
+        left: 84%
+    .s-reset
+        background: rgba(0,0,0,0)
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.5)
+    .b-open
+        width: 300px
+        height: 300px
+        position: absolute
+        display: inline-block
+        bottom: -2%
+        left: 50%
+        transform: translate(-50%,-50%)
+        border-radius: 2px
+        margin: 0
+//----------------------------------------social-------------------------------------------
+#social
+    box-shadow: none !important
+    ul.list
+        list-style: none
+        width: 100%
+        text-align: center
+        li
+            display: inline-block
+            cursor: default
+            margin: 10px
+            border-radius: 2px
+            box-shadow: $box-shadow-4dp
+            @media only screen and(max-width: 700px)
+                border-radius: 50%
+                height: 80px
+            a
+                text-decoration: none
+            h1
+                @include div-wala-font
+                font-family: 'fira sans'
+                padding: 20px
+                transition: color 100ms ease-in-out
+                @media only screen and(max-width: 700px)
+                    display: none
+                @media only screen and(max-width: 425px)
+                    font-size: 32px
+            &:hover h1
+                color: rgba(0,0,0,0.4)
+            svg
+                fill: rgba(#000,0.32)
+                width: 60px
+                display: none
+                transition: fill 100ms ease-in-out
+                padding: 10px
+                @media only screen and(max-width: 700px)
+                    display: inline-block
+            &:hover svg
+                fill: rgba(0,0,0,0.4)
+
+    // ul.list li.github, ul.list li.codepen
+
+
+    .fb
+        background: $facebook
+    .gplus
+        background: $gplus
+    .twitter
+        background: $twitter
+    .github
+        background: $github
+    .codepen
+        background: $codepen
+    .linked-in
+        background: $linked-in
+//------------------------------------------------------footer----------------------------------
+footer
+    position: relative
+    width: 100%
+    height: (500px/2)
+    background: $footer
+    text-align: center
+    h1
+        font-family: 'fira sans'
+        color: rgba(#000,0.4)
+        font-size: 14px
+        letter-spacing: 2px
+        padding: 0px 10px
+        margin-top: 40px
+        font-weight: normal
+    hr
+        width: 320px
+        height: 1px
+        background: linear-gradient(to right, rgba(#000,0),rgba(#000,0.3) ,rgba(#000,0))
+        margin: 15px auto
+        border: 0
+    h1.footer-link
+        cursor: default
+        // transition: all 150ms ease-in-out
+        margin: initial
+        display: inline-block
+        padding: 10px
+        padding-top: 0
+        text-decoration: underline
+        &:hover
+            color: #e2f528
+
+    a
+        &:focus
+            outline: none
+
+.fab-header-wrapper
+    overflow: hidden
+    height: 56px
+    position: relative
+    border-radius: 2px 2px 0 0
+
+.fab
+    right: 24px
+    bottom: 24px
+    width: 56px
+    height: 56px
+    border-radius: 50%
+    background: $accents
+    z-index: 1
+    position: fixed
+    box-shadow: 0 0 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24), 0 0 6px rgba(0,0,0,0.12), 0 6px 6px rgba(0,0,0,0.24)
+    transition: all 400ms ease-in-out, box-shadow 224ms ease-in-out
+    cursor: pointer
+    overflow: hidden
+    &:hover
+        box-shadow: 0 0 6px rgba(0,0,0,0.12), 0 6px 6px rgba(0,0,0,0.24), 0 0 12px rgba(0,0,0,0.12), 0 12px 12px rgba(0,0,0,0.24)
+    .fab-header
+        @include centered
+        background: $accents
+        width: 0
+        height: 0
+        border-radius: 50%
+        transition: all 200ms ease-in-out
+    .fab-header-badlo
+        background: $haribati
+
+    svg
+        @include centered
+        position: absolute
+        width: 24px
+        height: 24px
+
+    .form-wrapper
+        display: none
+        padding: 24px 24px 24px
+        min-height: 250px
+        line-height: 1.25em
+        overflow: hidden
+        .text-input
+            font-family: 'fira sans'
+            font-weight: normal
+            width: 100%
+            margin-top: 8px
+            margin-bottom: 8px
+            padding: .3125em
+            border: none
+            border-radius: 0
+            border-bottom: 1px solid $accents
+            background-color: inherit
+            transition: border-color .3s
+            color: inherit
+            font-size: 1em
+            display: inline-block
+            vertical-align: top
+            outline: 0
+            box-sizing: border-box
+            &:not(:focus)
+                border-bottom-color: rgba(0,0,0,.12)
+        textarea
+            font-family: 'fira sans'
+            font-weight: normal
+            resize: none
+            word-wrap: break-word
+        .button-wrapper
+            position: relative
+            width: 100%
+            height: 85px
+            .button
+                @include centered
+                width: 52px
+                height: 52px
+                border-radius: 50%
+                transform: translate(-50%, -50%) scale(1)
+                transition: all 350ms ease-in-out
+                box-shadow: $box-shadow-4dp
+                background-color: $accents
+                cursor: default
+                border: none
+                outline: 0
+                -webkit-tap-highlight-color: transparent
+                .svg-wrapper
+                    width: 100%
+                    height: 100%
+                    border-radius: 50%
+                    transition: background 0.2s ease-in-out
+                    cursor: default
+                    svg.send
+                        @include centered
+                        width: 22px
+                        height: 22px
+                        margin-left: 2px
+                        position: absolute
+                        fill: white
+
+.fab-open
+    width: 350px
+    height: 400px
+    margin: 0
+    border-radius: 2px
+    z-index: 2
+    bottom: 50%
+    right: 50%
+    transform: translate(50%,50%)
+    transition: all 350ms ease-in-out
+    background: #fff
+    cursor: default
+    box-shadow: $box-shadow-4dp
+    &:hover
+        box-shadow: $box-shadow-4dp
+    @media only screen and (max-width: 425px)
+        width: 100%
+        height: 100%
+    .fab-header-open
+        width: 400px
+        height: 400px
+        transform: translate(-50%,-50%) scale(1)
+        transition: all 700ms ease-in-out
+        position: absolute
+        @media only screen and (max-width: 425px)
+            width: 430px
+            height: 430px
+
+h1.fab-title
+    @include centered
+    font-family: 'fira sans'
+    font-weight: normal
+    position: absolute
+    color: white
+    font-size: 24px
+    cursor: default
+    display: none
+
+.icon-close
+    display: none
+    position: fixed
+    top: 8px
+    right: 8px
+    float: right
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    transition: background 200ms ease-in-out
+    &:hover
+        background: rgba(0,0,0,0.1)
+    &:active
+        background: rgba(0,0,0,0.2)
+    svg
+        @include centered
+        width: 24px
+        height: 24px
+
+.overlay
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.4)
+    position: fixed
+    z-index: 2
+    left: 0
